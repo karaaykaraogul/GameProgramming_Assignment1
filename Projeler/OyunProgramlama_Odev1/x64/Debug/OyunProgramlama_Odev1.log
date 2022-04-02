@@ -1,0 +1,23 @@
+﻿  Top.cpp
+C:\Users\PC\Desktop\Oyun Programlama\Projeler\OyunProgramlama_Odev1\Top.cpp(145,82): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\PC\Desktop\Oyun Programlama\Projeler\OyunProgramlama_Odev1\Top.cpp(145,30): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\PC\Desktop\Oyun Programlama\Projeler\OyunProgramlama_Odev1\Top.cpp(148,85): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\PC\Desktop\Oyun Programlama\Projeler\OyunProgramlama_Odev1\Top.cpp(148,22): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\PC\Desktop\Oyun Programlama\Projeler\OyunProgramlama_Odev1\Top.cpp(273,6): warning C4101: 'temp': unreferenced local variable
+  OyunProgramlama_Odev1.vcxproj -> C:\Users\PC\Desktop\Oyun Programlama\bin\OyunProgramlama_Odev1.exe

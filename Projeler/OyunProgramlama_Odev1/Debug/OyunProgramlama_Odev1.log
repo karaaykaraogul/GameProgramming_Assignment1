@@ -1,0 +1,63 @@
+﻿  Source.cpp
+C:\Users\PC\Desktop\Oyun Programlama\Projeler\OyunProgramlama_Odev1\Source.cpp(42,81): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\PC\Desktop\Oyun Programlama\Projeler\OyunProgramlama_Odev1\Source.cpp(42,59): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\PC\Desktop\Oyun Programlama\Projeler\OyunProgramlama_Odev1\Source.cpp(43,45): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\PC\Desktop\Oyun Programlama\Projeler\OyunProgramlama_Odev1\Source.cpp(43,28): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\PC\Desktop\Oyun Programlama\Projeler\OyunProgramlama_Odev1\Source.cpp(69,12): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+Source.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: float __thiscall sf::Time::asSeconds(void)const " (__imp_?asSeconds@Time@sf@@QBEMXZ) referenced in function _main
+Source.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) class sf::Time __cdecl sf::seconds(float)" (__imp_?seconds@sf@@YA?AVTime@1@M@Z) referenced in function _main
+Source.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) class sf::Time __cdecl sf::operator-(class sf::Time,class sf::Time)" (__imp_??Gsf@@YA?AVTime@0@V10@0@Z) referenced in function _main
+Source.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: __thiscall sf::Clock::Clock(void)" (__imp_??0Clock@sf@@QAE@XZ) referenced in function _main
+Source.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: class sf::Time __thiscall sf::Clock::getElapsedTime(void)const " (__imp_?getElapsedTime@Clock@sf@@QBE?AVTime@2@XZ) referenced in function _main
+Source.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: class sf::Time __thiscall sf::Clock::restart(void)" (__imp_?restart@Clock@sf@@QAE?AVTime@2@XZ) referenced in function _main
+Source.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) void __cdecl sf::sleep(class sf::Time)" (__imp_?sleep@sf@@YAXVTime@1@@Z) referenced in function _main
+Source.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: __thiscall sf::String::String(char const *,class std::locale const &)" (__imp_??0String@sf@@QAE@PBDABVlocale@std@@@Z) referenced in function _main
+Source.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: __thiscall sf::String::~String(void)" (__imp_??1String@sf@@QAE@XZ) referenced in function _main
+Source.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: static bool __cdecl sf::Keyboard::isKeyPressed(enum sf::Keyboard::Key)" (__imp_?isKeyPressed@Keyboard@sf@@SA_NW4Key@12@@Z) referenced in function _main
+Source.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: __thiscall sf::VideoMode::VideoMode(unsigned int,unsigned int,unsigned int)" (__imp_??0VideoMode@sf@@QAE@III@Z) referenced in function _main
+Source.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: void __thiscall sf::Window::close(void)" (__imp_?close@Window@sf@@QAEXXZ) referenced in function _main
+Source.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: bool __thiscall sf::Window::isOpen(void)const " (__imp_?isOpen@Window@sf@@QBE_NXZ) referenced in function _main
+Source.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: bool __thiscall sf::Window::pollEvent(class sf::Event &)" (__imp_?pollEvent@Window@sf@@QAE_NAAVEvent@2@@Z) referenced in function _main
+Source.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: void __thiscall sf::Window::display(void)" (__imp_?display@Window@sf@@QAEXXZ) referenced in function _main
+Source.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: void __thiscall sf::Transformable::setPosition(float,float)" (__imp_?setPosition@Transformable@sf@@QAEXMM@Z) referenced in function _main
+Source.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: void __thiscall sf::Transformable::setOrigin(float,float)" (__imp_?setOrigin@Transformable@sf@@QAEXMM@Z) referenced in function _main
+Source.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: void __thiscall sf::Transformable::rotate(float)" (__imp_?rotate@Transformable@sf@@QAEXM@Z) referenced in function _main
+Source.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: __thiscall sf::Color::Color(unsigned char,unsigned char,unsigned char,unsigned char)" (__imp_??0Color@sf@@QAE@EEEE@Z) referenced in function _main
+Source.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: void __thiscall sf::Shape::setFillColor(class sf::Color const &)" (__imp_?setFillColor@Shape@sf@@QAEXABVColor@2@@Z) referenced in function _main
+Source.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: __thiscall sf::CircleShape::CircleShape(float,unsigned int)" (__imp_??0CircleShape@sf@@QAE@MI@Z) referenced in function _main
+Source.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: void __thiscall sf::CircleShape::setRadius(float)" (__imp_?setRadius@CircleShape@sf@@QAEXM@Z) referenced in function _main
+Source.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: virtual __thiscall sf::CircleShape::~CircleShape(void)" (__imp_??1CircleShape@sf@@UAE@XZ) referenced in function _main
+Source.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: __thiscall sf::RectangleShape::RectangleShape(class sf::Vector2<float> const &)" (__imp_??0RectangleShape@sf@@QAE@ABV?$Vector2@M@1@@Z) referenced in function _main
+Source.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: void __thiscall sf::RectangleShape::setSize(class sf::Vector2<float> const &)" (__imp_?setSize@RectangleShape@sf@@QAEXABV?$Vector2@M@2@@Z) referenced in function _main
+Source.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: virtual __thiscall sf::RectangleShape::~RectangleShape(void)" (__imp_??1RectangleShape@sf@@UAE@XZ) referenced in function _main
+Source.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: __thiscall sf::View::View(class sf::Vector2<float> const &,class sf::Vector2<float> const &)" (__imp_??0View@sf@@QAE@ABV?$Vector2@M@1@0@Z) referenced in function _main
+Source.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: void __thiscall sf::RenderTarget::clear(class sf::Color const &)" (__imp_?clear@RenderTarget@sf@@QAEXABVColor@2@@Z) referenced in function _main
+Source.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: void __thiscall sf::RenderTarget::setView(class sf::View const &)" (__imp_?setView@RenderTarget@sf@@QAEXABVView@2@@Z) referenced in function _main
+Source.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: __thiscall sf::RenderWindow::RenderWindow(class sf::VideoMode,class sf::String const &,unsigned int,struct sf::ContextSettings const &)" (__imp_??0RenderWindow@sf@@QAE@VVideoMode@1@ABVString@1@IABUContextSettings@1@@Z) referenced in function _main
+Source.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: virtual __thiscall sf::RenderWindow::~RenderWindow(void)" (__imp_??1RenderWindow@sf@@UAE@XZ) referenced in function _main
+Source.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: virtual class sf::Vector2<unsigned int> __thiscall sf::RenderWindow::getSize(void)const " (__imp_?getSize@RenderWindow@sf@@UBE?AV?$Vector2@I@2@XZ) referenced in function _main
+Source.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: static class sf::Color const sf::Color::White" (__imp_?White@Color@sf@@2V12@B) referenced in function _main
+Source.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: static class sf::Color const sf::Color::Green" (__imp_?Green@Color@sf@@2V12@B) referenced in function _main
+C:\Users\PC\Desktop\Oyun Programlama\Projeler\OyunProgramlama_Odev1\\..\..\Dependencies\lib\sfml-audio-d.lib : warning LNK4272: library machine type 'x64' conflicts with target machine type 'x86'
+C:\Users\PC\Desktop\Oyun Programlama\Projeler\OyunProgramlama_Odev1\\..\..\Dependencies\lib\sfml-graphics-d.lib : warning LNK4272: library machine type 'x64' conflicts with target machine type 'x86'
+C:\Users\PC\Desktop\Oyun Programlama\Projeler\OyunProgramlama_Odev1\\..\..\Dependencies\lib\sfml-main-d.lib : warning LNK4272: library machine type 'x64' conflicts with target machine type 'x86'
+C:\Users\PC\Desktop\Oyun Programlama\Projeler\OyunProgramlama_Odev1\\..\..\Dependencies\lib\sfml-network-d.lib : warning LNK4272: library machine type 'x64' conflicts with target machine type 'x86'
+C:\Users\PC\Desktop\Oyun Programlama\Projeler\OyunProgramlama_Odev1\\..\..\Dependencies\lib\sfml-system-d.lib : warning LNK4272: library machine type 'x64' conflicts with target machine type 'x86'
+C:\Users\PC\Desktop\Oyun Programlama\Projeler\OyunProgramlama_Odev1\\..\..\Dependencies\lib\sfml-window-d.lib : warning LNK4272: library machine type 'x64' conflicts with target machine type 'x86'
+C:\Users\PC\Desktop\Oyun Programlama\Projeler\OyunProgramlama_Odev1\\..\..\bin\OyunProgramlama_Odev1.exe : fatal error LNK1120: 34 unresolved externals

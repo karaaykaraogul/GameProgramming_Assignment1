@@ -1,0 +1,91 @@
+#include "Oyun.hpp"
+#include <iostream>
+#include "Izgara.hpp"
+#include "Top.hpp"
+Izgara izgara;
+Top top(10.f);
+Oyun::Oyun()
+{
+	m_fps = 60;
+	m_cerceveSuresi = sf::seconds(1.0f / m_fps);
+	m_devamEdiyormu = true;
+	m_atesDerecesi = 90;
+}
+
+Oyun::~Oyun()
+{
+}
+
+void Oyun::setFps(int fps)
+{
+}
+void Oyun::oyunuAyarla()
+{
+	top.ayarla();
+	izgara.ayarla();
+}
+
+
+void Oyun::oyunuKapat()
+{
+	m_pencere.kapat();
+}
+void Oyun::oyunuBaslat(unsigned int genislik, unsigned int yukseklik)
+{
+	m_genislik = genislik;
+	m_yukseklik = yukseklik;
+	m_pencere.olustur(genislik, yukseklik, "SFML");
+
+	oyunuAyarla();
+
+	saatiYenidenBaslat();
+	while (m_pencere.acikmi())
+	{
+
+		m_pencere.olayKontrol();
+
+		if (m_saat.getElapsedTime() >= m_cerceveSuresi)
+		{
+			cizimFonksiyonu();
+			saatiYenidenBaslat();
+		}
+		else
+		{
+			sf::sleep(m_cerceveSuresi - m_saat.getElapsedTime());
+		}
+
+	}
+}
+
+void Oyun::cizimFonksiyonu()
+{
+	m_pencere.cizimeBasla();
+
+	
+
+	if (m_devamEdiyormu)
+	{
+		izgara.ciz(m_pencere);
+		m_atesNoktasi.ciz(m_pencere);
+		top.cizListe(m_pencere);
+		m_atesNoktasi.hareket();
+		top.CarpismaKontrolu();
+		top.atesEt(m_atesNoktasi);
+		if (m_atesNoktasi.aimDirection.getRotation() + 90 > 360) {
+			m_atesDerecesi = m_atesNoktasi.aimDirection.getRotation() - 270;
+		}
+		else {
+			m_atesDerecesi = m_atesNoktasi.aimDirection.getRotation() + 90;
+		}
+		
+	}
+
+	m_pencere.cizimiBitir();
+}
+
+
+
+void Oyun::saatiYenidenBaslat()
+{
+	m_saat.restart();
+}
