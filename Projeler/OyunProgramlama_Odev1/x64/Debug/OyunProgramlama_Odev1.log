@@ -1,23 +1,25 @@
 ﻿  Top.cpp
-C:\Users\PC\Desktop\Oyun Programlama\Projeler\OyunProgramlama_Odev1\Top.cpp(145,82): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+C:\Users\PC\Desktop\OyunProgramlama_Odev1\Projeler\OyunProgramlama_Odev1\Top.cpp(150,82): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\PC\Desktop\Oyun Programlama\Projeler\OyunProgramlama_Odev1\Top.cpp(145,30): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+C:\Users\PC\Desktop\OyunProgramlama_Odev1\Projeler\OyunProgramlama_Odev1\Top.cpp(150,30): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\PC\Desktop\Oyun Programlama\Projeler\OyunProgramlama_Odev1\Top.cpp(148,85): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+C:\Users\PC\Desktop\OyunProgramlama_Odev1\Projeler\OyunProgramlama_Odev1\Top.cpp(153,85): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\PC\Desktop\Oyun Programlama\Projeler\OyunProgramlama_Odev1\Top.cpp(148,22): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+C:\Users\PC\Desktop\OyunProgramlama_Odev1\Projeler\OyunProgramlama_Odev1\Top.cpp(153,22): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\PC\Desktop\Oyun Programlama\Projeler\OyunProgramlama_Odev1\Top.cpp(273,6): warning C4101: 'temp': unreferenced local variable
-  OyunProgramlama_Odev1.vcxproj -> C:\Users\PC\Desktop\Oyun Programlama\bin\OyunProgramlama_Odev1.exe
+C:\Users\PC\Desktop\OyunProgramlama_Odev1\Projeler\OyunProgramlama_Odev1\Top.cpp(195,27): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\PC\Desktop\OyunProgramlama_Odev1\Projeler\OyunProgramlama_Odev1\Top.cpp(204,28): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\PC\Desktop\OyunProgramlama_Odev1\Projeler\OyunProgramlama_Odev1\Top.cpp(269,6): warning C4101: 'temp': unreferenced local variable
+  OyunProgramlama_Odev1.vcxproj -> C:\Users\PC\Desktop\OyunProgramlama_Odev1\bin\OyunProgramlama_Odev1.exe

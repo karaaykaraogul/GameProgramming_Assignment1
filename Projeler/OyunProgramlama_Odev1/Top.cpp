@@ -13,7 +13,6 @@ Top::Top(float boyut)
 	m_sekil.setOutlineThickness(1);
 	m_sekil.setOutlineColor(sf::Color::White);
 	m_sekil.setFillColor(sf::Color::Red);
-
 }
 
 
@@ -111,19 +110,23 @@ bool isFirst = true;
 bool carpisma = false;
 Top yeniTop(10.0f);
 Top siradakiTop(10.0f);
-void Top::atesEt(AtesNoktasi& atesNoktasi) 
+Top siradakiTop2(10.0f);
+
+void Top::atesEt(AtesNoktasi& atesNoktasi)
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && toplar.back().hiz <= 0) {
-		
+
 		carpisma = false;
 		if (isFirst) {
 			yeniTop = topUret(atesNoktasi);
 			siradakiTop = topUret(atesNoktasi);
+			siradakiTop2 = topUret(atesNoktasi);
 			isFirst = false;
 		}
 		else {
 			yeniTop = siradakiTop;
-			siradakiTop = topUret(atesNoktasi);
+			siradakiTop = siradakiTop2;
+			siradakiTop2 = topUret(atesNoktasi);
 		}
 
 		yeniTop.m_konum = atesNoktasi.aimDirection.getPosition();
@@ -132,14 +135,16 @@ void Top::atesEt(AtesNoktasi& atesNoktasi)
 
 
 		siradakiToplar.push_back(siradakiTop);
+		siradakiToplar.push_back(siradakiTop2);
 		std::cout << siradakiToplar.size() << "\n";
 		toplar.push_back(yeniTop);
 
-		
+		siradakiToplar.end()[-1].m_konum = sf::Vector2f(atesNoktasi.aimDirection.getPosition().x - 100.f, atesNoktasi.aimDirection.getPosition().y);
+
 	}
-	
+
 	if (toplar.back().hiz > 0) {
-		
+
 		sf::Vector2f dx;
 		if (!carpisma) {
 			dx = sf::Vector2f(std::sin(toplar.back().m_sekil.getRotation() / 180 * M_PI), -(std::cos(toplar.back().m_sekil.getRotation() / 180 * M_PI)));
@@ -156,7 +161,7 @@ void Top::atesEt(AtesNoktasi& atesNoktasi)
 			dx.x *= -1;
 			carpisma = false;
 		}
-		
+
 		if (toplar.back().m_konum.x >= 600 && !carpisma) {
 			dx.x *= -1;
 			carpisma = true;
@@ -169,7 +174,7 @@ void Top::atesEt(AtesNoktasi& atesNoktasi)
 		toplar.back().m_konum.x = toplar.back().m_sekil.getPosition().x;
 		toplar.back().m_konum.y = toplar.back().m_sekil.getPosition().y;
 	}
-	}
+}
 
 
 
@@ -179,7 +184,7 @@ void Top::CarpismaKontrolu()
 	if (toplar.back().m_konum.y <= 0) {
 		toplar.back().hiz = 0;
 	}
-	for (int i = 0; i < (toplar.size()-1); i++) {
+	for (int i = 0; i < (toplar.size() - 1); i++) {
 
 		float deltaX = toplar[i].m_konum.x - toplar.back().m_konum.x;
 		float deltaY = toplar[i].m_konum.y - toplar.back().m_konum.y;
@@ -187,22 +192,23 @@ void Top::CarpismaKontrolu()
 		float intersectX = abs(deltaX) - (toplar[i].m_sekil.getRadius() + toplar.back().m_sekil.getRadius());
 		float intersectY = abs(deltaY) - (toplar[i].m_sekil.getRadius() + toplar.back().m_sekil.getRadius());
 
-		if (intersectX < 0.0f && intersectY < 0.0f) {
-			
-			
-			
+		float intersectDiagonal = sqrt((deltaX * deltaX) + (deltaY * deltaY)) - ((toplar[i].m_sekil.getRadius() * sqrt(2)) + (toplar.back().m_sekil.getRadius() * sqrt(2)));
+
+		if ((intersectX < 0.0f && intersectY < 0.0f) || intersectDiagonal <= 0.0f) {
 
 			toplar.back().hiz = 0;
-			
+
 			int minAraTop = 0;
 			float tempDeltaX = 100.0f;
 			float tempDeltaY = 100.0f;
+			float tempDeltaDiagonal = 100.0f * sqrt(2);
 			for (int j = 0; j < baglanabilirToplar.size(); j++) {
 				bool dolu = false;
 				float diffX = abs(baglanabilirToplar[j].m_konum.x - toplar.back().m_konum.x);
 				float diffY = abs(baglanabilirToplar[j].m_konum.y - toplar.back().m_konum.y);
+				float diffDiagonal = sqrt((diffX * diffX) + (diffY * diffY));
 
-				if (diffX < tempDeltaX && diffY < tempDeltaY) {
+				if ((diffX < tempDeltaX && diffY < tempDeltaY) || diffDiagonal < tempDeltaDiagonal) {
 					for (int k = 0; k < (toplar.size() - 1); k++) {
 						if (baglanabilirToplar[j].m_konum.x == toplar[k].m_konum.x && baglanabilirToplar[j].m_konum.y == toplar[k].m_konum.y) {
 							dolu = true;
@@ -211,6 +217,7 @@ void Top::CarpismaKontrolu()
 					if (!dolu) {
 						tempDeltaX = diffX;
 						tempDeltaY = diffY;
+						tempDeltaDiagonal = diffDiagonal;
 						minAraTop = j;
 					}
 				}
@@ -218,17 +225,6 @@ void Top::CarpismaKontrolu()
 			toplar.back().m_konum.x = baglanabilirToplar[minAraTop].m_konum.x;
 			toplar.back().m_konum.y = baglanabilirToplar[minAraTop].m_konum.y;
 
-			/*if (toplar[i].m_sekil.getFillColor().toInteger() == toplar.back().m_sekil.getFillColor().toInteger())
-			{
-				std::cout << "Degdigi top rengi: " << renk << "\n";
-				std::cout << "Degen top rengi: " << renk2 << "\n";
-				toplar.erase(toplar.begin() + i);
-				toplar.erase(toplar.begin() + (toplar.size() - 1));
-				siradakiToplar.erase(siradakiToplar.begin());
-
-
-			}*/
-			
 		}
 
 	}
@@ -241,7 +237,7 @@ void Top::CarpismaKontrolu()
 				float diffX = abs(toplar[a].m_konum.x - toplar.back().m_konum.x);
 				float diffY = abs(toplar[a].m_konum.y - toplar.back().m_konum.y);
 				float z = sqrt((diffX * diffX) + (diffY * diffY));
-				if (z <= 20.0f || (diffX <= 20 && diffY == 0) ||(diffX == 0 && diffY <= 20)) {
+				if (z <= 20.0f * sqrt(2) || (diffX <= 20 && diffY == 0) || (diffX == 0 && diffY <= 20)) {
 					patlayacakToplar[yanindakiAyniRenkTopSayisi] = a;
 					yanindakiAyniRenkTopSayisi++;
 				}
@@ -271,33 +267,15 @@ void Top::CarpismaKontrolu()
 		}
 	}
 	int temp;
-	/*for (int e = 0; e < (yanindakiAyniRenkTopSayisi - 1); e++) {
-		if (patlayacakToplar[e] > patlayacakToplar[e + 1]) {
-			temp = patlayacakToplar[e];
-			patlayacakToplar[e] = patlayacakToplar[e + 1];
-			patlayacakToplar[e + 1] = temp;
-			std::cout << "siraladim abi: " << patlayacakToplar[e] << "\n";
-		}
-	}*/
-	//int siralanmisToplar[100];
-	
-	
-	// BURDA SIRALAMASI LAZIM AMA ÜSTTE SIRALADIM DÝYÝP SONRA ALTTA SIRALAMIYO ÇILDIRICAM AAAAAAAAAAAAAAAAAAAAAAAA
-	//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-	if (yanindakiAyniRenkTopSayisi >= 3) {
-		/*for (int i = 0; i < yanindakiAyniRenkTopSayisi; i++) {
 
-			std::cout << "AAWW: " << patlayacakToplar[i] << " \n";
-			siralanmisToplar[i] = patlayacakToplar[i];
-			std::cout << "Abi bak bu: " << siralanmisToplar[i];
-		}*/
+	if (yanindakiAyniRenkTopSayisi >= 3) {
+
 		std::cout << "\n";
 		int silmeKarsitiDenge = 0;
 		for (int d = 0; d < yanindakiAyniRenkTopSayisi; d++) {
 			int denge = 0;
 			int oncesindeKucukSayisi = 0;
 			if (patlayacakToplar[d] != 0) {
-				//toplarý sýrala
 				for (int i = 0; i < d; i++) {
 					if (patlayacakToplar[i] > patlayacakToplar[d]) {
 						denge++;
@@ -308,7 +286,7 @@ void Top::CarpismaKontrolu()
 				}
 				int sira = 0;
 				if (oncesindeKucukSayisi > 0 && denge > 0) {
-					sira = patlayacakToplar[d] - (silmeKarsitiDenge-oncesindeKucukSayisi);
+					sira = patlayacakToplar[d] - (silmeKarsitiDenge - oncesindeKucukSayisi);
 				}
 				else if (oncesindeKucukSayisi == 0 && denge > 0) {
 					sira = patlayacakToplar[d];
@@ -332,7 +310,7 @@ int Top::degenTopBul(int aramaTopu) {
 				float diffX = abs(toplar[i].m_konum.x - toplar[aramaTopu].m_konum.x);
 				float diffY = abs(toplar[i].m_konum.y - toplar[aramaTopu].m_konum.y);
 				float z = sqrt((diffX * diffX) + (diffY * diffY));
-				if (z <= 20.0f || (diffX <= 20 && diffY == 0) || (diffX == 0 && diffY <= 20)) {
+				if (z <= 20.0f * sqrt(2) || (diffX <= 20 && diffY == 0) || (diffX == 0 && diffY <= 20)) {
 					return i;
 				}
 			}

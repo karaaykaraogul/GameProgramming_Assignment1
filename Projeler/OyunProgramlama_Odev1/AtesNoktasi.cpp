@@ -10,24 +10,34 @@ AtesNoktasi::AtesNoktasi()
 	shootingPoint.setFillColor(sf::Color::Green);
 	shootingPoint.setRadius(10.f);
 	shootingPoint.setOrigin(10.f, 10.f);
+
+	aci = 0;
 }
 
 void AtesNoktasi::hareket()
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-		aimDirection.rotate(-2.f);
-		shootingPoint.rotate(-2.f);
+		if (aci > -80.f)
+		{
+			aimDirection.rotate(-2.f);
+			shootingPoint.rotate(-2.f);
+			aci -= 2.f;
+		}
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-		aimDirection.rotate(2.f);
-		shootingPoint.rotate(2.f);
+		if (aci < 80.f)
+		{
+			aimDirection.rotate(2.f);
+			shootingPoint.rotate(2.f);
+			aci += 2.f;
+		}
 	}
 }
 
 void AtesNoktasi::ciz(Pencere& pencere)
 {
-	aimDirection.setPosition(pencere.boyutAlX() / 2.f, pencere.boyutAlY()-10);
-	shootingPoint.setPosition(pencere.boyutAlX() / 2.f, pencere.boyutAlY()-10);
+	aimDirection.setPosition(pencere.boyutAlX() / 2.f, pencere.boyutAlY() - 10);
+	shootingPoint.setPosition(pencere.boyutAlX() / 2.f, pencere.boyutAlY() - 10);
 
 
 	pencere.ciz(aimDirection);

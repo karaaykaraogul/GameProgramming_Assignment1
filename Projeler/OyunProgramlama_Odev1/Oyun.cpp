@@ -32,9 +32,10 @@ void Oyun::oyunuKapat()
 }
 void Oyun::oyunuBaslat(unsigned int genislik, unsigned int yukseklik)
 {
+
 	m_genislik = genislik;
 	m_yukseklik = yukseklik;
-	m_pencere.olustur(genislik, yukseklik, "SFML");
+	m_pencere.olustur(genislik, yukseklik, "Puzzle Bobble");
 
 	oyunuAyarla();
 
@@ -61,7 +62,7 @@ void Oyun::cizimFonksiyonu()
 {
 	m_pencere.cizimeBasla();
 
-	
+
 
 	if (m_devamEdiyormu)
 	{
@@ -77,7 +78,7 @@ void Oyun::cizimFonksiyonu()
 		else {
 			m_atesDerecesi = m_atesNoktasi.aimDirection.getRotation() + 90;
 		}
-		
+
 	}
 
 	m_pencere.cizimiBitir();

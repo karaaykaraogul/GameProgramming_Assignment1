@@ -12,4 +12,6 @@ public:
 
 	sf::CircleShape shootingPoint;
 
+	float aci;
+
 };
