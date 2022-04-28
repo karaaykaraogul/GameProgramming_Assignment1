@@ -3,15 +3,22 @@
 #include<iostream>
 AtesNoktasi::AtesNoktasi()
 {
-	aimDirection.setFillColor(sf::Color::White);
+	aimDirection.setFillColor(sf::Color::Transparent);
 	aimDirection.setSize(sf::Vector2f(1.f, 100.f));
 	aimDirection.setOrigin(1.f, 100.f);
 
 	shootingPoint.setFillColor(sf::Color::Green);
 	shootingPoint.setRadius(10.f);
-	shootingPoint.setOrigin(10.f, 10.f);
+	shootingPoint.setOrigin(10.f, 15.f);
 
 	aci = 0;
+}
+
+void AtesNoktasi::textureEkle(sf::Texture* texture)
+{
+	shootingPoint.setTexture(texture);
+	shootingPoint.setTextureRect(sf::IntRect(sf::Vector2i(1,1545),sf::Vector2i(64,64)));
+	shootingPoint.setScale(5, 5);
 }
 
 void AtesNoktasi::hareket()

@@ -4,7 +4,7 @@
 #include "AtesNoktasi.hpp"
 #include<vector>
 #include<iostream>
-#include<cmath>
+#include <cmath>
 
 Top::Top(float boyut)
 {
@@ -16,7 +16,7 @@ Top::Top(float boyut)
 }
 
 
-void Top::ayarla()
+void Top::ayarla(sf::Texture* texture)
 {
 	int satir = 0;
 	for (int i = -10; i < 300; i += 20) {
@@ -30,25 +30,27 @@ void Top::ayarla()
 				yeniTop.m_konum.x = j + 40.f;
 				yeniTop.m_konum.y = i + 20.f;
 			}
-			int random = rand() % 5;
+			int random = rand() % 4;
 			switch (random) {
 			case 0:
+				yeniTop.anim.olustur(texture, sf::Vector2i(196, 608 + (97 * random)), sf::Vector2i(64,64), 6);
 				yeniTop.m_sekil.setFillColor(sf::Color::Red);
 				break;
 			case 1:
+				yeniTop.anim.olustur(texture, sf::Vector2i(196, 608 + (97 * random)), sf::Vector2i(64, 64), 6);
 				yeniTop.m_sekil.setFillColor(sf::Color::Blue);
 				break;
 			case 2:
+				yeniTop.anim.olustur(texture, sf::Vector2i(196, 608 + (97 * random)), sf::Vector2i(64, 64), 6);
 				yeniTop.m_sekil.setFillColor(sf::Color::Green);
 				break;
 			case 3:
+				yeniTop.anim.olustur(texture, sf::Vector2i(196, 608 + (97 * random)), sf::Vector2i(64, 64), 6);
 				yeniTop.m_sekil.setFillColor(sf::Color::Yellow);
 				break;
 			case 4:
+				yeniTop.anim.olustur(texture, sf::Vector2i(196, 608 + (97 * random)), sf::Vector2i(64, 64), 6);
 				yeniTop.m_sekil.setFillColor(sf::Color::Magenta);
-				break;
-			case 5:
-				yeniTop.m_sekil.setFillColor(sf::Color::White);
 				break;
 			}
 			toplar.push_back(yeniTop);
@@ -69,7 +71,8 @@ void Top::ayarla()
 
 }
 
-Top Top::topUret(AtesNoktasi& atesNoktasi) {
+Top Top::topUret(AtesNoktasi& atesNoktasi, sf::Texture* texture) {
+	
 	Top yeniTop(10.f);
 
 	yeniTop.m_konum = atesNoktasi.aimDirection.getPosition();
@@ -82,25 +85,27 @@ Top Top::topUret(AtesNoktasi& atesNoktasi) {
 
 	yeniTop.hareketEtmisTop = true;
 
-	int random = rand() % 5;
+	int random = rand() % 4;
 	switch (random) {
 	case 0:
+		yeniTop.anim.olustur(texture, sf::Vector2i(196, 608 + (97 * random)), sf::Vector2i(64, 64), 6);
 		yeniTop.m_sekil.setFillColor(sf::Color::Red);
 		break;
 	case 1:
+		yeniTop.anim.olustur(texture, sf::Vector2i(196, 608 + (97 * random)), sf::Vector2i(64, 64), 6);
 		yeniTop.m_sekil.setFillColor(sf::Color::Blue);
 		break;
 	case 2:
+		yeniTop.anim.olustur(texture, sf::Vector2i(196, 608 + (97 * random)), sf::Vector2i(64, 64), 6);
 		yeniTop.m_sekil.setFillColor(sf::Color::Green);
 		break;
 	case 3:
+		yeniTop.anim.olustur(texture, sf::Vector2i(196, 608 + (97 * random)), sf::Vector2i(64, 64), 6);
 		yeniTop.m_sekil.setFillColor(sf::Color::Yellow);
 		break;
 	case 4:
+		yeniTop.anim.olustur(texture, sf::Vector2i(196, 608 + (97 * random)), sf::Vector2i(64, 64), 6);
 		yeniTop.m_sekil.setFillColor(sf::Color::Magenta);
-		break;
-	case 5:
-		yeniTop.m_sekil.setFillColor(sf::Color::White);
 		break;
 	}
 	return yeniTop;
@@ -112,21 +117,21 @@ Top yeniTop(10.0f);
 Top siradakiTop(10.0f);
 Top siradakiTop2(10.0f);
 
-void Top::atesEt(AtesNoktasi& atesNoktasi)
+void Top::atesEt(AtesNoktasi& atesNoktasi, sf::Texture* texture)
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && toplar.back().hiz <= 0) {
 
 		carpisma = false;
 		if (isFirst) {
-			yeniTop = topUret(atesNoktasi);
-			siradakiTop = topUret(atesNoktasi);
-			siradakiTop2 = topUret(atesNoktasi);
+			yeniTop = topUret(atesNoktasi,texture);
+			siradakiTop = topUret(atesNoktasi, texture);
+			siradakiTop2 = topUret(atesNoktasi, texture);
 			isFirst = false;
 		}
 		else {
 			yeniTop = siradakiTop;
 			siradakiTop = siradakiTop2;
-			siradakiTop2 = topUret(atesNoktasi);
+			siradakiTop2 = topUret(atesNoktasi, texture);
 		}
 
 		yeniTop.m_konum = atesNoktasi.aimDirection.getPosition();
@@ -295,12 +300,20 @@ void Top::CarpismaKontrolu()
 					sira = patlayacakToplar[d] - silmeKarsitiDenge;
 				}
 				std::cout << patlayacakToplar[d] << " , ";
-				toplar.erase(toplar.begin() + sira);
-				silmeKarsitiDenge++;
-
+				toplar[sira].anim.guncelle();
+				if (toplar[sira].anim.m_aktifSprite >= 5)
+				{
+					topSil(sira);
+					silmeKarsitiDenge++;
+				}
+				
 			}
 		}
 	}
+}
+void Top::topSil(int sira)
+{
+	toplar.erase(toplar.begin() + sira);
 }
 
 int Top::degenTopBul(int aramaTopu) {
@@ -322,17 +335,24 @@ int Top::degenTopBul(int aramaTopu) {
 void Top::cizListe(Pencere& pencere)
 {
 	for (auto siradaki : toplar) {
-		siradaki.ciz(pencere);
+		siradaki.animliCiz(pencere);
 	}
 	for (auto siradaki : baglanabilirToplar) {
 		siradaki.ciz(pencere);
 	}
 	for (auto siradaki : siradakiToplar) {
-		siradaki.ciz(pencere);
+		siradaki.animliCiz(pencere);
 	}
 }
 void Top::ciz(Pencere& pencere)
 {
 	m_sekil.setPosition(m_konum);
 	pencere.ciz(m_sekil);
+}
+void Top::animliCiz(Pencere& pencere)
+{
+	anim.m_konum = m_konum;
+	//m_sekil.setPosition(m_konum);
+	//this->anim.m_spriteListesi[this->anim.m_aktifSprite].setPosition(m_konum);
+	this->anim.ciz(pencere);
 }

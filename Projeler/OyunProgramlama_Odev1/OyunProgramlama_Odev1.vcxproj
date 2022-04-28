@@ -143,6 +143,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Animasyon.cpp" />
     <ClCompile Include="AtesNoktasi.cpp" />
     <ClCompile Include="Izgara.cpp" />
     <ClCompile Include="Kare.cpp" />
@@ -152,6 +153,7 @@
     <ClCompile Include="Top.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Animasyon.hpp" />
     <ClInclude Include="AtesNoktasi.hpp" />
     <ClInclude Include="Cizilebilir.hpp" />
     <ClInclude Include="Izgara.hpp" />

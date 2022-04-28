@@ -7,6 +7,7 @@ public:
 	AtesNoktasi();
 	virtual void ciz(Pencere& pencere) override;
 	void hareket();
+	void textureEkle(sf::Texture* texture);
 
 	sf::RectangleShape aimDirection;
 

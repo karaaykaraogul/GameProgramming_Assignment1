@@ -8,9 +8,9 @@ public:
 	Oyun();
 	~Oyun();
 	void setFps(int fps);
-	void oyunuBaslat(unsigned int genislik = 600, unsigned int yukseklik = 600);
-	void cizimFonksiyonu();
-	void oyunuAyarla();
+	void oyunuBaslat(sf::Texture* texture, unsigned int genislik = 600, unsigned int yukseklik = 600);
+	void cizimFonksiyonu(sf::Texture* texture);
+	void oyunuAyarla(sf::Texture* texture);
 	void klavyeBasildi(sf::Keyboard::Key tus);
 	void oyunuKapat();
 

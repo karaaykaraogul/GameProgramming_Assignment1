@@ -19,9 +19,9 @@ Oyun::~Oyun()
 void Oyun::setFps(int fps)
 {
 }
-void Oyun::oyunuAyarla()
+void Oyun::oyunuAyarla(sf::Texture* texture)
 {
-	top.ayarla();
+	top.ayarla(texture);
 	izgara.ayarla();
 }
 
@@ -30,14 +30,13 @@ void Oyun::oyunuKapat()
 {
 	m_pencere.kapat();
 }
-void Oyun::oyunuBaslat(unsigned int genislik, unsigned int yukseklik)
+void Oyun::oyunuBaslat(sf::Texture* texture, unsigned int genislik, unsigned int yukseklik)
 {
-
 	m_genislik = genislik;
 	m_yukseklik = yukseklik;
 	m_pencere.olustur(genislik, yukseklik, "Puzzle Bobble");
 
-	oyunuAyarla();
+	oyunuAyarla(texture);
 
 	saatiYenidenBaslat();
 	while (m_pencere.acikmi())
@@ -47,7 +46,7 @@ void Oyun::oyunuBaslat(unsigned int genislik, unsigned int yukseklik)
 
 		if (m_saat.getElapsedTime() >= m_cerceveSuresi)
 		{
-			cizimFonksiyonu();
+			cizimFonksiyonu(texture);
 			saatiYenidenBaslat();
 		}
 		else
@@ -58,7 +57,7 @@ void Oyun::oyunuBaslat(unsigned int genislik, unsigned int yukseklik)
 	}
 }
 
-void Oyun::cizimFonksiyonu()
+void Oyun::cizimFonksiyonu(sf::Texture* texture)
 {
 	m_pencere.cizimeBasla();
 
@@ -67,11 +66,12 @@ void Oyun::cizimFonksiyonu()
 	if (m_devamEdiyormu)
 	{
 		izgara.ciz(m_pencere);
+		m_atesNoktasi.textureEkle(texture);
 		m_atesNoktasi.ciz(m_pencere);
 		top.cizListe(m_pencere);
 		m_atesNoktasi.hareket();
 		top.CarpismaKontrolu();
-		top.atesEt(m_atesNoktasi);
+		top.atesEt(m_atesNoktasi,texture);
 		if (m_atesNoktasi.aimDirection.getRotation() + 90 > 360) {
 			m_atesDerecesi = m_atesNoktasi.aimDirection.getRotation() - 270;
 		}
